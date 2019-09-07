@@ -6,17 +6,36 @@ var rightAnswers = 0;
 var wrongAnswers = 0;
 var questionTimer;
 
+//function for the game to display a question and change it
 
+var gameManager = {
+
+    setGameStart: function(question) {
+
+    },
+    changeQuestion: function (question) {
+        switch (question) {
+            case $("#question1"):
+                triviaAnswers = new triviaAnswers(apple, pear, orange, grape);
+                console.log(triviaQuestion);
+                break;
+        
+            default:
+
+            //if the timer runs out and an answer is selected
+                break;
+        }
+
+    }
+}
 
 //function that can diplay to the user question and associated answers
-function triviaQuestion(question, a1, a2, a3, a4, t, f) {
-    this.quesition = question;
+function triviaAnswers(a1, a2, a3, a4) {
+    this.answer = answer;
     this.a1 = a1; 
-    this.a1 = a1;
-    this.a1 = a1;
-    this.a1 = a1;
-    this.t = t;
-    this.f = f;
+    this.a2 = a2;
+    this.a3 = a3;
+    this.a4 = a4;
 }
 
 
