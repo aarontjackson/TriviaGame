@@ -90,11 +90,18 @@ $(document).ready(function () {
     //Timer to answer questions
 
     // Button to start the timer
-    $("#startBtn").click(startTrivia);
+    $("#startBtn").click(function() {
+
+        $("#startBtn").hide();
+        displayQuestion();
+        startTrivia();
+    });
+
 
     // Button to reset the game
     $("#resetBtn").click(stopTrivia);
 
+  
 
     // Start the trivia game timer
     function startTrivia() {
@@ -112,7 +119,6 @@ $(document).ready(function () {
 
             stopTrivia();
 
-            alert("Time Up!");
         }
     }
 
@@ -167,7 +173,12 @@ $(document).ready(function () {
         }
     })
 
-    // $('.userPick').each(triviaQuestion.answer);
+    // Trivia reset
+    $("#resetBtn").click(function() {
+
+
+    });
+
 
 });
 
