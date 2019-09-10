@@ -2,12 +2,13 @@ $(document).ready(function () {
     //identify global variables
     var triviaQuestion;
     var answer;
-    var rightAnswers = true;
-    var wrongAnswers = false;
+    var rightAnswers = 0;
+    var wrongAnswers = 0;
     var count = 0;
     var questionTimer = 30;
     var questionCount = 1;
     var intervalId;
+    var userPick;
 
 
     //create 10 questions for the user to answer (true/false or multiple choice)
@@ -127,27 +128,47 @@ $(document).ready(function () {
     function displayQuestion() {
         randomQuestion = Math.floor(Math.random() * triviaQuestion.length);
 
-        answer = triviaQuestion[i];
+        display = triviaQuestion[i];
     }
 
     function changeQuestion() {
         count++;
 
-        $("#question").html("<div>" + triviaQuestion.question[count] + "</div>");
+        // Display question onto the window
+        $("#question").html("<div>" + display.question + "</div>");
 
-        for (let i = 0; i < triviaQuestion.question.length; i++) {
-            var userPick = $("<div>");
-            userPick.attr({
-                "class": 'userPick', i
-            });
-
-            $('.userPick').each(triviaQuestion.answer);
-
-            return rightAnswers[count] || wrongAnswers[count];
+        // Display all answer choices for user selection
+        for (let i = 0; i < display.choices.length; i++) {
+            $("#answer").html ("<div>" + display.choices + "</div><br>");
+        // Record user selections into an array
+            userPick.attr("userValue", i);
+            $("#answer").append(userPick);
         }
     }
 
-    // Event delegation for
+    // Event delegation for user selecting an answer
+    $("#answer").click(function() {
+
+        // Document user array position to compare to integer value of answer
+        userPick = parseInt.attr("userValue");
+
+        // Trivia game outcomes
+
+        if (userPick === display.answer ) {
+            stopTrivia();
+            rightAnswers++;
+            $("#message").html("<p>Correct!<p>");
+        }
+
+        else {
+            stopTrivia();
+            wrongAnswers++;
+            $("#message").html("<p>Wrong! The correct answer is: " + display.choices[display.answer] + "<p>");
+        }
+    })
+
+    // $('.userPick').each(triviaQuestion.answer);
+
 });
 
 
