@@ -2,12 +2,13 @@ $(document).ready(function () {
     //identify global variables
     var triviaQuestion;
     var answer;
-    var rightAnswers = 0;
-    var wrongAnswers = 0;
+    var rightAnswers = true;
+    var wrongAnswers = false;
+    var count = 0;
     var questionTimer = 30;
     var questionCount = 1;
-    var intervalID;
-    var showQuestion;
+    var intervalId;
+
 
     //create 10 questions for the user to answer (true/false or multiple choice)
 
@@ -42,7 +43,7 @@ $(document).ready(function () {
 
         {
             question: "A spider's silk is how many times stronger than steel?",
-            choice: ["4", "2", "3", "5"],
+            choices: ["4", "2", "3", "5"],
             answer: 3,
             image: ""
         },
@@ -56,7 +57,7 @@ $(document).ready(function () {
 
         {
             question: "Lettuce is to sunflower seeds, as a peach is to _____ ",
-            choice: ["almonds", "soybeans", "onions", "cabbage"],
+            choices: ["almonds", "soybeans", "onions", "cabbage"],
             answer: 0,
             image: ""
         },
@@ -85,15 +86,6 @@ $(document).ready(function () {
     ];
 
 
-    //Timer start
-    $("#startBtn").click()
-        questionTimer = setInterval(30000)
-        setInterval(function () {
-            seconds = (1000 * 20);
-
-        })
-    }
-
     //Timer to answer questions
 
     // Button to start the timer
@@ -103,64 +95,83 @@ $(document).ready(function () {
     $("#resetBtn").click(stopTrivia);
 
 
-    //function to start the game
-
-
-    //function for the game to display a question and change it
-
-    //function for timer
-
-    // Start the trivia game
+    // Start the trivia game timer
     function startTrivia() {
+        clearInterval(intervalId);
+        intervalId = setInterval(decrement, 1000);
+    }
 
-        // Hold the setInterval to run the next question.
-        questionTimer = setInterval(funct, 30000);
-      }
+    function decrement() {
+
+        questionTimer--;
+
+        $("#timer").html("<span>" + number + "</span>");
+
+        if (questionTimer === 0) {
+
+            stopTrivia();
+
+            alert("Time Up!");
+        }
+    }
 
     // Stop the tirivia game  
     function stopTrivia() {
-
         // ClearInterval for the question:
-        clearInterval = (showQuestion);
-      }
+        clearInterval(intervalId);
+    }
+
+    startTrivia();
 
 
+    function displayQuestion() {
+        randomQuestion = Math.floor(Math.random() * triviaQuestion.length);
+
+        answer = triviaQuestion[i];
+    }
 
     function changeQuestion() {
-        $("#question").html("<div>" + question.length + "<div>");
+        count++;
 
-        for (let i = 0; i < question.length; i++) {
-            randomQuestion = Math.floor(Math.random() * question.length);
-            console.log(question.length);
+        $("#question").html("<div>" + triviaQuestion.question[count] + "</div>");
+
+        for (let i = 0; i < triviaQuestion.question.length; i++) {
             var userPick = $("<div>");
-            userAnswer.attr({
-                "class": 'userPick'
-            question.each(choices, function (i, val) {
-                    $("answer" + i).append(choices)
+            userPick.attr({
+                "class": 'userPick', i
+            });
 
-                })
+            $('.userPick').each(triviaQuestion.answer);
 
-            }
-
+            return rightAnswers[count] || wrongAnswers[count];
+        }
     }
 
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-    //create statements for correct and incorrect answers (ideally using if/else)/add a timer function
-
-    //display total number of correct and incorrect answers with 
-
-    //function to restart the game
-
+    // Event delegation for
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //create statements for correct and incorrect answers (ideally using if/else)/add a timer function
+
+        //display total number of correct and incorrect answers with 
+
+        //function to restart the game
+
+   
