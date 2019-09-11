@@ -61,6 +61,32 @@ var triviaQuestions = [
     }
 ];
 
+var rightImages = [
+    "./assets/images/thermoRight.gif",
+    "./assets/images/alphabetRight.gif",
+    "./assets/images/omgRight.gif",
+    "./assets/images/treesRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif"
+];
+
+var wrongImages = [
+    "./assets/images/thermoWrong.gif",
+    "./assets/images/alphabetWrong.gif",
+    "./assets/images/omgWrong.gif",
+    "./assets/images/treesWrong.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif",
+    "./assets/images/thermoRight.gif"
+];
+
 //identify global variables
 var counter = 30;
 var currentQuestion = 0;
@@ -88,14 +114,19 @@ function nextQuestion() {
 
 // Change the question if the timer reaches zero
 function timeUp() {
+
     clearInterval(timer);
 
     lost++;
 
-    nextQuestion();
+    loadImages("lost");
+
+    setTimeout(nextQuestion, 3 * 1000);
 }
+
 // Timer countdown function
 function countDown() {
+
     counter--;
 
     $("#time").html("Time Remaining: " + counter);
@@ -104,8 +135,10 @@ function countDown() {
         timeUp();
     }
 }
+
 // Load the question and answers with a 30 second timer for user to answer
 function loadQuestion() {
+
     counter = 30;
     timer = setInterval(countDown, 1000);
 
@@ -117,7 +150,6 @@ function loadQuestion() {
         <h4>${question}</h4>
         ${loadChoices(choices)}
         `);
-
 }
 
 // Timer for user to select an answer
@@ -136,26 +168,36 @@ function loadChoices(choices) {
 
     return result;
 }
+
 loadQuestion();
 
 // Event delegation for user selecting right/wrong answer
 $(document).on("click", ".choice", function () {
+
     clearInterval;
+
     var selectedAnswer = $(this).attr("data-answer");
+
     var answer = triviaQuestions[currentQuestion].answer;
+
     console.log("click is up", selectedAnswer);
 
     if (answer === selectedAnswer) {
+
         score++;
-        nextQuestion();
+        loadImages("win");
+        setTimeout(nextQuestion, 3 * 1000);
     }
     else {
+
         lost++;
-        nextQuestion();
+        loadImages("lost");
+        setTimeout(nextQuestion, 3 * 1000);
     }
 });
 
 function displayResults() {
+
     var result = `
             <p> You answered ${score} question(s) right!</p>
             <p> You missed ${lost} question(s)!</p>
@@ -167,6 +209,7 @@ function displayResults() {
 }
 
 $(document).on("click", "#reset", function () {
+
     counter = 30;
     currentQuestion = 0;
     score = 0;
@@ -176,7 +219,51 @@ $(document).on("click", "#reset", function () {
     loadQuestion();
 });
 
-loadQuestion();
+// Check to see if there are any remaining unanswered questions
+// function remainingQuestions() {
+//     var questionsLeft = triviaQuestions.length - (currentQuestion +1);
+//     var totalQuestion = triviaQuestions.length;
+
+//     return remainingQuestions:
+// }
+
+//Image array for right or wrong selections
+
+function triviaImages(images) {
+
+    var showImage = images[i];
+    return triviaImages;
+
+}
+
+// Display images for right or wrong questions
+
+function loadImages(record) {
+    
+    var correctAnswer = triviaQuestions[currentQuestion].correctAnswer;
+
+    if (record === "win") {
+        $("#games").html(`
+            <p class="preload-image">The correct</p>
+            <p class="preload-image">The correct answer is <strong>${correctAnswer}</strong></p>
+            <img src="${triviaImages(rightImages)}"/>
+        `);
+    }
+    else {
+        $("#games").html(`
+            <p class="preload-image">Wrong! The correct answer is <strong>${correctAnswer}</strong></p>
+            <p class="preload-image"> So close... but wrong</p>
+            <img src="${triviaImages(wrongImages)}"/>
+        `);
+    }
+
+}
+
+$("#start").click(funtion() {
+    $("#start").hide();
+    $("#time").html(counter);
+    loadQuestion();
+});
 
 
         // Document user array position to compare to integer value of answer
