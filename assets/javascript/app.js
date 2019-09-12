@@ -12,72 +12,72 @@ var triviaQuestions = [
         question: "How many letters are in the Hawaiian alphabet?",
         choices: ["27", "26", "13", "23"],
         answer: "13",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        rightImage:  "./assets/images/alphabetRight.gif",
+        wrongImage: "./assets/images/alphabetWrong.gif"
     },
 
     {
         question: "The term OMG was first used in?",
         choices: ["1994", "1917", "1984", "2001"],
         answer: "1917",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        rightImage:  "./assets/images/omgRight.gif",
+        wrongImage: "./assets/images/omgWrong.gif"
     },
 
     {
         question: "Two full grown trees can support a family of?",
         choices: ["4", "2", "3", "5"],
         answer: "4",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        rightImage:  "./assets/images/treesRight.gif",
+        wrongImage: "./assets/images/treesWrong.gif"
     },
 
     {
         question: "A spider's silk is how many times stronger than steel?",
         choices: ["4", "2", "3", "5"],
-        answer: "3",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        answer: "5",
+        rightImage:  "./assets/images/spiderRight.gif",
+        wrongImage: "./assets/images/spiderWrong.gif"
     },
 
     {
         question: "The sun makes up _______ % of the mass in our Solar System.",
         choices: ["85", "20", "99", "90"],
         answer: "99",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        rightImage:  "./assets/images/sunRight.gif",
+        wrongImage: "./assets/images/sunWrong.gif"
     },
 
     {
-        question: "Lettuce is to sunflower seeds, as a peach is to _____ ",
-        choices: ["Almonds", "Soybeans", "Onions", "Cabbage"],
-        answer: "Almonds",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        question: "Lettuce is to sunflower seeds, as an almond is to _____ ",
+        choices: ["Peaches", "Soybeans", "Onions", "Cabbage"],
+        answer: "Peaches",
+        rightImage:  "./assets/images/almondRight.gif",
+        wrongImage: "./assets/images/almondWrong.gif"
     },
 
     {
         question: "How many rings make up the symbol of the Olympic Games",
         choices: ["Three", "Five", "Six", "Seven"],
         answer: "Five",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        rightImage:  "./assets/images/olympicsRight.gif",
+        wrongImage: "./assets/images/olympicsWrong.gif"
     },
 
     {
         question: "As the old idiom goes practice makes _______",
         choices: ["Failure", "Performance", "Pancakes", "Perfect"],
         answer: "Perfect",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        rightImage:  "./assets/images/practiceRight.gif",
+        wrongImage: "./assets/images/practiceWrong.gif"
     },
 
     {
         question: "What is the most commonly eaten food in the world?",
         choices: ["Wheat", "Potatoes", "Corn", "Beans"],
         answer: "Corn",
-        rightImage:  "./assets/images/thermoRight.gif",
-        wrongImage: "./assets/images/thermoWrong.gif"
+        rightImage:  "./assets/images/cornRight.gif",
+        wrongImage: "./assets/images/cornWrong.gif"
     }
 ];
 
@@ -165,9 +165,9 @@ function loadQuestion() {
     var choices = triviaQuestions[currentQuestion].choices;
 
     $("#time").html("Time Remaining: " + counter);
-    $("#game").html(`  
-        <h4>${question}</h4>
-        ${loadChoices(choices)}
+    $("#game").html(`
+    <h4>${question}</h4>
+    ${loadChoices(choices)}
     `);
 }
 

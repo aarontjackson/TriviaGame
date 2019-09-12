@@ -4,5 +4,23 @@
 } */
 
 .choice {
-    
+    cursor: pointer;
+}
+
+.choice:hover {
+    border-radius: 5px;
+    border: 2px solid #007bff;
+    width: 180px;
+    height: 40px;
+    padding: 4px 0 0 8px;
+}
+
+.jumbotron{
+    margin: 0 auto;
+    text-align: center;
+}
+
+span{
+    font-family: 'Modak', cursive;
+    font-size: 80px;
 }
