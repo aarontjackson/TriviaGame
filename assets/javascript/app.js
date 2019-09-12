@@ -1,9 +1,9 @@
 //create 10 questions for the user to answer (true/false or multiple choice)
 var triviaQuestions = [
     {
-        question: "Forthy degrees fahrenheit is the same as _______ celsius.",
-        choices: ["Forthy Degrees Celsius", "Twenty Degrees Celsius", "Thirty Degress Celsius", "Fifty Degress Celsius"],
-        answer: "Forthy Degrees Celsius",
+        question: "Forty degrees fahrenheit is the same as _______ celsius.",
+        choices: ["Forty Degrees Celsius", "Twenty Degrees Celsius", "Thirty Degress Celsius", "Fifty Degress Celsius"],
+        answer: "Forty Degrees Celsius",
         rightImage: "./assets/images/thermoRight.gif",
         wrongImage: "./assets/images/thermoWrong.gif"
     },
